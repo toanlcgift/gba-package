@@ -17,7 +17,9 @@ export enum Button {
 	L = 9,
 }
 
-
+/**
+ * 键盘按键
+ */
 export enum Keyboard {
     back = 0,
     menu,
@@ -121,6 +123,9 @@ export enum Keyboard {
     dpadCenter,
 }
 
+/**
+ * 键盘按键表键
+ */
 const KeyboardList = [
     'back',
     'menu',
@@ -224,6 +229,10 @@ const KeyboardList = [
     'dpadCenter',
 ]
 
+/**
+ * 获得按键码
+ * @param key 
+ */
 export function getKeyCode(key:Keyboard){
     return cc.macro.KEY[KeyboardList[key]];
 }
@@ -281,10 +290,14 @@ export class Controller extends cc.Component {
 		}
     }
 
-
+    /**
+     * NES 对象
+     */
     private _gba:core.GameBoyAdvance = null;
 
-
+    /**
+     * 键盘映射
+     */
     private _keymap:{[key:number]:number} = null;
 
     // LIFE-CYCLE CALLBACKS:
@@ -302,10 +315,19 @@ export class Controller extends cc.Component {
         this.node.targetOff(this);
     }
 
+    /**
+     * 节点按钮事件
+     * @param player 
+     * @param button 
+     * @param down 
+     */
     private onNodeButtonEvent(button:Button, down:boolean){
         this.onButtonEvent(button, down);
     }
 
+    /**
+     * 按钮事件
+     */
     onButtonEvent(button:Button, down:boolean){
 		if(down){
 			this._gba.buttonDown(button);
@@ -314,6 +336,9 @@ export class Controller extends cc.Component {
 		}
     }
 	
+    /**
+     * 当按钮按下
+     */
     private onKeyDown(event:cc.Event.EventKeyboard){
         let button = this._keymap[event.keyCode];
         if(button != null){
@@ -321,6 +346,9 @@ export class Controller extends cc.Component {
         }
     }
 
+    /**
+     * 当按钮放开
+     */
     private onKeyUp(event:cc.Event.EventKeyboard){
         let button = this._keymap[event.keyCode];
         if(button != null){
@@ -328,6 +356,9 @@ export class Controller extends cc.Component {
         }
     }
 
+    /**
+     * 更新按钮映射
+     */
     private updateButtonMap(){
         this._keymap = {};
         for (let b of this._buttons){

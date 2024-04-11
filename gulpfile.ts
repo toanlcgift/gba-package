@@ -15,6 +15,9 @@ let fs=require("fs");
 let path=require("path");
 let argv = require('yargs').argv;
 
+/**
+ * 框架ts配置
+ */
 const framworkTS = ts.createProject({
 	module : "system",
 	lib : [ "dom", "es5", "es2015.promise" ],
@@ -27,7 +30,9 @@ const framworkTS = ts.createProject({
 	outFile : "lcc-gba.js",
 });
 
-
+/**
+ * 构建框架
+ */
 export function buildFramework(cb:Function) {
 	if(fs.existsSync('framework')){
 		console.log("buildFramework");
@@ -58,11 +63,18 @@ export function buildFramework(cb:Function) {
 	}
 }
 
+/**
+ * 测试
+ * @param cb 
+ */
 export function test(cb:Function){
 	return gulp.src([ '../../@types/**/*.ts', '../../assets/**/*.ts', '!../../assets/packs/**/*.ts' ])
 		.pipe(debug({title: 'file:'}));
 }
 
+/**
+ * 默认构建
+ */
 export default function build(cb:Function){
 	console.log("please select a task:");
 	console.log("	buildFramework");

@@ -4,6 +4,9 @@ module lcc$gba {
 const CHANNELSIZE = 4096;
 const BUFFERSIZE = CHANNELSIZE * 4;
 
+/**
+ * 音频播放器
+ */
 export class AudioPlayer implements core.AudioDevice {
 	private _buffer:RingBuffer = null;
 	private _audioCtx:AudioContext = null;

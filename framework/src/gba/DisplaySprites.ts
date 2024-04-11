@@ -25,6 +25,9 @@ export class DisplaySprites extends cc.Component {
 		}
     }
 
+    /**
+     * 模拟器
+     */
     private _emulator:Emulator = null;
 
     // LIFE-CYCLE CALLBACKS:
@@ -34,6 +37,10 @@ export class DisplaySprites extends cc.Component {
         this.setDisplaySprites(this.sprites);
     }
 
+    /**
+     * 设置展示Sprite数组
+     * @param sprites 
+     */
     private setDisplaySprites(sprites:cc.Sprite[]){
         if(sprites && sprites.length > 0){
             let spriteFrame = new cc.SpriteFrame(this._emulator.getVideo().getTexture());

@@ -1,6 +1,9 @@
 
 module lcc$gba {
 
+/**
+ * 环形缓冲区
+ */
 export class RingBuffer  {
 	
 	private _elements:any[] = null;

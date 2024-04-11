@@ -1,3 +1,9 @@
+/**
+ * Cocos Creator 编辑器命名空间
+ * @author 陈皮皮（ifaswind）
+ * @version 20200804
+ * @see https://gitee.com/ifaswind/eazax-ccc/blob/master/declarations/editor.d.ts
+ */
 declare namespace Editor {
 
     /**
